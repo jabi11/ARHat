@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0DEE241DF5F9CE9FC960BF5B /* Pods_ARHat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0E7B5E8EE4DFDE27B150550 /* Pods_ARHat.framework */; };
 		38029B78219DB7CF00EEDA8B /* Face2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38029B77219DB7CF00EEDA8B /* Face2D.swift */; };
 		38029B7A219DE97800EEDA8B /* Face3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38029B79219DE97800EEDA8B /* Face3D.swift */; };
 		388F133A21C82EEE00393584 /* SCNNode+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388F133921C82EEE00393584 /* SCNNode+Animations.swift */; };
@@ -51,7 +52,10 @@
 		38F70F102195BCA6005E65E5 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		38F70F1F2199EAE9005E65E5 /* FaceTrackingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceTrackingManager.swift; sourceTree = "<group>"; };
 		38F70F26219B57BB005E65E5 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		92C017D6BEB89F48B746141F /* Pods-ARHat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARHat.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARHat/Pods-ARHat.release.xcconfig"; sourceTree = "<group>"; };
+		939BF35EEBFEC48D1E1915D8 /* Pods-ARHat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARHat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARHat/Pods-ARHat.debug.xcconfig"; sourceTree = "<group>"; };
 		9BFAFEB42C39C7722F7E664E /* Pods-ARWig.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARWig.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARWig/Pods-ARWig.debug.xcconfig"; sourceTree = "<group>"; };
+		A0E7B5E8EE4DFDE27B150550 /* Pods_ARHat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARHat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2098AF6A206BD50DAEB4790 /* Pods_ARWig.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARWig.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E63A787C06E0DFAFB5CED735 /* Pods-ARWig.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARWig.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARWig/Pods-ARWig.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,6 +66,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE53EAA4DD7E507B674B48DE /* Pods_ARWig.framework in Frameworks */,
+				0DEE241DF5F9CE9FC960BF5B /* Pods_ARHat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				E2098AF6A206BD50DAEB4790 /* Pods_ARWig.framework */,
+				A0E7B5E8EE4DFDE27B150550 /* Pods_ARHat.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -174,6 +180,8 @@
 			children = (
 				9BFAFEB42C39C7722F7E664E /* Pods-ARWig.debug.xcconfig */,
 				E63A787C06E0DFAFB5CED735 /* Pods-ARWig.release.xcconfig */,
+				939BF35EEBFEC48D1E1915D8 /* Pods-ARHat.debug.xcconfig */,
+				92C017D6BEB89F48B746141F /* Pods-ARHat.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -259,7 +267,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ARWig-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ARHat-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -272,7 +280,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ARWig/Pods-ARWig-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ARHat/Pods-ARHat-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
@@ -283,7 +291,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARWig/Pods-ARWig-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ARHat/Pods-ARHat-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -443,18 +451,18 @@
 		};
 		38F70F092195B9BB005E65E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9BFAFEB42C39C7722F7E664E /* Pods-ARWig.debug.xcconfig */;
+			baseConfigurationReference = 939BF35EEBFEC48D1E1915D8 /* Pods-ARHat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S84RM8A475;
+				DEVELOPMENT_TEAM = F6QAUDT4F6;
 				INFOPLIST_FILE = "$(SRCROOT)/ARHat/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hattrick-it.ARHat";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jabi.ARHat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -463,18 +471,18 @@
 		};
 		38F70F0A2195B9BB005E65E5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E63A787C06E0DFAFB5CED735 /* Pods-ARWig.release.xcconfig */;
+			baseConfigurationReference = 92C017D6BEB89F48B746141F /* Pods-ARHat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S84RM8A475;
+				DEVELOPMENT_TEAM = F6QAUDT4F6;
 				INFOPLIST_FILE = "$(SRCROOT)/ARHat/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hattrick-it.ARHat";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jabi.ARHat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

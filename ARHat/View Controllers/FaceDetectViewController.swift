@@ -20,11 +20,12 @@ class FaceDetectViewController: UIViewController {
     
     // MARK: - Properties
     let faceProportion: Float = 1.5
-    let modelScale: Float = 140
+    let modelScale: Float = 1
     
     var faces: [Face2D] = []
     var timer: Timer!
     var lastLineNode: [SCNNode] = []
+    var model: String = "cylinder"
     
     // MARK: - Setup
     init() {
@@ -37,6 +38,14 @@ class FaceDetectViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let left = UISwipeGestureRecognizer(target: self, action: #selector(FaceDetectViewController.leftSwipe))
+        left.direction = .left
+        self.previewView.addGestureRecognizer(left)
+        
+        let right = UISwipeGestureRecognizer(target: self, action: #selector(FaceDetectViewController.rightSwipe))
+        right.direction = .right
+        self.previewView.addGestureRecognizer(right)
         
         let scene = SCNScene()
         previewView.scene = scene
@@ -58,6 +67,26 @@ class FaceDetectViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         previewView.session.pause()
+    }
+    
+    @objc
+    func leftSwipe() {
+        if model == "hat" {
+            model = "cylinder"
+        } else {
+            model = "hat"
+        }
+        print(model)
+    }
+    
+    @objc
+    func rightSwipe() {
+        if model == "hat" {
+            model = "cylinder"
+        } else {
+            model = "hat"
+        }
+        print(model)
     }
     
     fileprivate func faceTracking() {
@@ -83,16 +112,19 @@ class FaceDetectViewController: UIViewController {
             FaceManager.sharedInstance.deleteUnusedFaces()
             for face in FaceManager.sharedInstance.lastFaces {
                 let facePosition = face.getPosition()
-                let hattrickNode = ModelsManager.sharedInstance.getNode(forIndex: index)
+                let hattrickNode = ModelsManager.sharedInstance.getNode(forIndex: index, model: model)
                 if hattrickNode.parent == nil {
                     hattrickNode.position = facePosition
-                    hattrickNode.position.y += face.getFaceSize() * faceProportion
-                    hattrickNode.infiniteRotation(x: 0, y: Float.pi, z: 0, duration: 5.0)
+                    hattrickNode.position.y += face.getFaceSize() * 1.1
+                    //hattrickNode.infiniteRotation(x: 0, y: Float.pi, z: 0, duration: 5.0)
                 } else {
-                    let move = SCNAction.moveBy(x: CGFloat(facePosition.x - hattrickNode.position.x), y: CGFloat(facePosition.y + face.getFaceSize() * faceProportion - hattrickNode.position.y), z: CGFloat(facePosition.z - hattrickNode.position.z), duration: 0.05)
-                    hattrickNode.runAction(move)
+//                    let move = SCNAction.moveBy(x: CGFloat(facePosition.x - hattrickNode.position.x), y: 0,
+//                        z: CGFloat(facePosition.z - hattrickNode.position.z), duration: 0.05)
+//                    hattrickNode.runAction(move)
                 }
-                hattrickNode.scale = SCNVector3(face.getFaceSize() * modelScale, face.getFaceSize() * modelScale, face.getFaceSize() * modelScale)
+                hattrickNode.scale = SCNVector3(face.getFaceSize() * modelScale,
+                                                face.getFaceSize() * modelScale,
+                                                face.getFaceSize() * modelScale)
                 
                 self.previewView.scene.rootNode.addChildNode(hattrickNode)
                 
