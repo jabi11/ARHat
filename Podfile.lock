@@ -2,20 +2,24 @@ PODS:
   - RxCocoa (4.3.1):
     - RxSwift (~> 4.0)
   - RxSwift (4.3.1)
+  - VerticalCardSwiper (1.0.0)
 
 DEPENDENCIES:
   - RxCocoa (~> 4.0)
   - RxSwift (~> 4.0)
+  - VerticalCardSwiper
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - RxCocoa
     - RxSwift
+    - VerticalCardSwiper
 
 SPEC CHECKSUMS:
   RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
   RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
+  VerticalCardSwiper: 515b67e281731293cdf69d96904d67091389a1b4
 
-PODFILE CHECKSUM: e8f9bcdaf06f4035921fbbc2899e42c66768b7d4
+PODFILE CHECKSUM: 5f168c7b747aa1d1733529b3d65e90f2e476d4f8
 
 COCOAPODS: 1.6.1

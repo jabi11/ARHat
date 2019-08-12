@@ -11,24 +11,24 @@ import UIKit
 import RxSwift
 
 class MainCoordinator: BaseCoordinator<Void> {
-    
+
     let window: UIWindow
     var navigationController: UINavigationController!
-    
+
     init(window: UIWindow) {
         self.window = window
     }
-    
+
     override func start() -> Observable<Void> {
         let faceDetectViewController = FaceDetectViewController()
-        
+
         navigationController = UINavigationController(rootViewController: faceDetectViewController)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
-        
+
         navigationController.setNavigationBarHidden(true, animated: true)
-        
+
         return Observable.never()
     }
-    
+
 }

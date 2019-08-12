@@ -6,6 +6,8 @@ end
 target 'ARHat' do
   use_frameworks!
 
+  pod 'VerticalCardSwiper'
+
   shared_pods
 
 end

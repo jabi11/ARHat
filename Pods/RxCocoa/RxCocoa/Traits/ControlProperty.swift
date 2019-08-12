@@ -9,7 +9,7 @@
 import RxSwift
 
 /// Protocol that enables extension of `ControlProperty`.
-public protocol ControlPropertyType : ObservableType, ObserverType {
+public protocol ControlPropertyType: ObservableType, ObserverType {
 
     /// - returns: `ControlProperty` interface
     func asControlProperty() -> ControlProperty<E>
@@ -40,7 +40,7 @@ public protocol ControlPropertyType : ObservableType, ObserverType {
     **In case `values` observable sequence that is being passed into initializer doesn't satisfy all enumerated
     properties, please don't use this trait.**
 */
-public struct ControlProperty<PropertyType> : ControlPropertyType {
+public struct ControlProperty<PropertyType>: ControlPropertyType {
     public typealias E = PropertyType
 
     let _values: Observable<PropertyType>
@@ -62,7 +62,7 @@ public struct ControlProperty<PropertyType> : ControlPropertyType {
     ///
     /// - parameter observer: Observer to subscribe to property values.
     /// - returns: Disposable object that can be used to unsubscribe the observer from receiving control property values.
-    public func subscribe<O : ObserverType>(_ observer: O) -> Disposable where O.E == E {
+    public func subscribe<O: ObserverType>(_ observer: O) -> Disposable where O.E == E {
         return _values.subscribe(observer)
     }
 

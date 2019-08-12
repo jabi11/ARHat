@@ -9,15 +9,15 @@
 import Foundation
 
 class FaceManager {
-    
+
     // MARK: - Singleton
-    
+
     static let sharedInstance = FaceManager()
-    
+
     // MARK: - Properties
-    
+
     var lastFaces: [Face] = []
-    
+
     func addNewFace(face2D: Face2D, face3D: Face3D) {
         for face in lastFaces {
             if face.addNewValue(face2D: face2D, face3D: face3D) {
@@ -29,13 +29,12 @@ class FaceManager {
         _ = face.addNewValue(face2D: face2D, face3D: face3D)
         lastFaces.append(face)
     }
-    
+
     func deleteUnusedFaces() {
         lastFaces.removeAll(where: { !$0.active })
         for face in lastFaces {
             face.active = false
         }
     }
-    
-}
 
+}

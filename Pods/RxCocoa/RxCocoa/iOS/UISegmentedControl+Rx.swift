@@ -16,7 +16,7 @@ extension Reactive where Base: UISegmentedControl {
     public var selectedSegmentIndex: ControlProperty<Int> {
         return value
     }
-    
+
     /// Reactive wrapper for `selectedSegmentIndex` property.
     public var value: ControlProperty<Int> {
         return base.rx.controlPropertyWithDefaultEvents(
@@ -27,24 +27,24 @@ extension Reactive where Base: UISegmentedControl {
             }
         )
     }
-    
+
     /// Reactive wrapper for `setEnabled(_:forSegmentAt:)`
     public func enabledForSegment(at index: Int) -> Binder<Bool> {
-        return Binder(self.base) { (segmentedControl, segmentEnabled) -> () in
+        return Binder(self.base) { (segmentedControl, segmentEnabled) -> Void in
             segmentedControl.setEnabled(segmentEnabled, forSegmentAt: index)
         }
     }
-    
+
     /// Reactive wrapper for `setTitle(_:forSegmentAt:)`
     public func titleForSegment(at index: Int) -> Binder<String?> {
-        return Binder(self.base) { (segmentedControl, title) -> () in
+        return Binder(self.base) { (segmentedControl, title) -> Void in
             segmentedControl.setTitle(title, forSegmentAt: index)
         }
     }
-    
+
     /// Reactive wrapper for `setImage(_:forSegmentAt:)`
     public func imageForSegment(at index: Int) -> Binder<UIImage?> {
-        return Binder(self.base) { (segmentedControl, image) -> () in
+        return Binder(self.base) { (segmentedControl, image) -> Void in
             segmentedControl.setImage(image, forSegmentAt: index)
         }
     }

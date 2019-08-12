@@ -11,17 +11,17 @@ import CoreGraphics
 import SceneKit
 
 class Face {
-    
+
     let max2DDistance: CGFloat = 30.0
     let max3DDistance: Float = 0.005
     let maxSamples = 10
     let outlierRatio = 0.7
     let ratio: Float = 80.0
-    
+
     var faces2D: [Face2D] = []
     var faces3D: [Face3D] = []
     var active: Bool = true
-    
+
     func addNewValue(face2D: Face2D, face3D: Face3D) -> Bool {
         if faces2D.isEmpty {
             faces2D.append(face2D)
@@ -35,8 +35,8 @@ class Face {
                     minDistance = distance
                 }
             }
-            
-            if minDistance < max2DDistance  {
+
+            if minDistance < max2DDistance {
                 faces2D.append(face2D)
                 faces3D.append(face3D)
                 if (faces2D.count > maxSamples) {
@@ -49,11 +49,11 @@ class Face {
             }
         }
     }
-    
+
     func getPosition() -> SCNVector3 {
         var divisor = 0
         var vector = SCNVector3Make(0, 0, 0)
-        
+
         for (index, face) in faces3D.enumerated() {
             if isOutlier(index: index) {
                 divisor += 1
@@ -63,15 +63,15 @@ class Face {
                 vector += face.btwEyes * ratio
             }
         }
-        
+
         vector = vector / Float(divisor)
         return vector
     }
-    
+
     func getFaceSize() -> Float {
         var divisor = 0
         var size: Float = 0
-        
+
         for (index, face) in faces3D.enumerated() {
             if isOutlier(index: index) {
                 divisor += 1
@@ -81,21 +81,21 @@ class Face {
                 size += face.getFaceSize() * ratio
             }
         }
-        
+
         return size / Float(divisor)
     }
-    
+
     fileprivate func isOutlier(index: Int) -> Bool {
         var pointDiferents = 0
-        
+
         for face in faces3D {
             let distance = SCNVector3.distance(from: faces3D[index].btwEyes, to: face.btwEyes)
             if distance >= max3DDistance {
                 pointDiferents += 1
             }
         }
-        
+
         return Float(pointDiferents) > Float(maxSamples) * Float(outlierRatio)
     }
-    
+
 }

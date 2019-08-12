@@ -16,7 +16,7 @@ import UIKit
 #endif
 
 extension Reactive where Base: UIControl {
-    
+
     /// Bindable sink for `enabled` property.
     public var isEnabled: Binder<Bool> {
         return Binder(self.base) { control, value in
@@ -44,7 +44,7 @@ extension Reactive where Base: UIControl {
                 }
 
                 let controlTarget = ControlTarget(control: control, controlEvents: controlEvents) {
-                    control in
+                    _ in
                     observer.on(.next(()))
                 }
 
@@ -63,7 +63,7 @@ extension Reactive where Base: UIControl {
     public func controlProperty<T>(
         editingEvents: UIControlEvents,
         getter: @escaping (Base) -> T,
-        setter: @escaping (Base, T) -> ()
+        setter: @escaping (Base, T) -> Void
     ) -> ControlProperty<T> {
         let source: Observable<T> = Observable.create { [weak weakControl = base] observer in
                 guard let control = weakControl else {
@@ -78,7 +78,7 @@ extension Reactive where Base: UIControl {
                         observer.on(.next(getter(control)))
                     }
                 }
-                
+
                 return Disposables.create(with: controlTarget.dispose)
             }
             .takeUntil(deallocated)
@@ -93,7 +93,7 @@ extension Reactive where Base: UIControl {
     internal func controlPropertyWithDefaultEvents<T>(
         editingEvents: UIControlEvents = [.allEditingEvents, .valueChanged],
         getter: @escaping (Base) -> T,
-        setter: @escaping (Base, T) -> ()
+        setter: @escaping (Base, T) -> Void
         ) -> ControlProperty<T> {
         return controlProperty(
             editingEvents: editingEvents,

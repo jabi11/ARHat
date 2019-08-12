@@ -32,7 +32,7 @@ extension Reactive where Base: UIView {
             view.isUserInteractionEnabled = userInteractionEnabled
         }
     }
-    
+
 }
 
 #endif

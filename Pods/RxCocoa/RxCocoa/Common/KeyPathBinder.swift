@@ -8,9 +8,9 @@
 
 #if swift(>=3.2)
     import RxSwift
-    
+
     extension Reactive where Base: AnyObject {
-        
+
         /// Bindable sink for arbitrary property using the given key path.
         /// Binding runs on the MainScheduler.
         ///
@@ -20,7 +20,7 @@
                 base[keyPath: keyPath] = value
             }
         }
-        
+
         /// Bindable sink for arbitrary property using the given key path.
         /// Binding runs on the specified scheduler.
         ///
@@ -31,6 +31,6 @@
                 base[keyPath: keyPath] = value
             }
         }
-        
+
     }
 #endif
