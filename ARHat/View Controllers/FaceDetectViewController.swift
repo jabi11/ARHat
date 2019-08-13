@@ -42,20 +42,13 @@ class FaceDetectViewController: UIViewController {
     var models: [SCNNode] = []
     var modelsIndex = 0
 
-    // MARK: - Setup
-    init() {
-        super.init(nibName: String(describing: type(of: self)), bundle: nil)
-        setupScenes()
-        toggleScenes()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        setupScenes()
+        toggleScenes()
+        
+        
         let left = UISwipeGestureRecognizer(target: self, action: #selector(FaceDetectViewController.leftSwipe))
         left.direction = .left
         self.previewView.addGestureRecognizer(left)
@@ -86,6 +79,8 @@ class FaceDetectViewController: UIViewController {
         previewView.session.pause()
     }
 
+    
+    // MARK: - Setup Scenes
     func setupScenes() {
 
         guard let activeSceneA = SCNScene(named: "art.scnassets/blsmpht2.dae"),
@@ -110,7 +105,7 @@ class FaceDetectViewController: UIViewController {
         let activeSceneC = SCNScene(mdlAsset: mdlAsset)
         let modelRootC = activeSceneC.rootNode.childNode(withName: "Object_1", recursively: true)
         modelRootC?.scale = SCNVector3(0.65, 0.65, 0.65)
-        modelRootC?.geometry?.firstMaterial?.diffuse.contents = UIColor.green
+        //modelRootC?.geometry?.firstMaterial?.diffuse.contents = UIColor.green
 
         self.modelRootC = modelRootC
         models.append(modelRootC!)
@@ -184,6 +179,8 @@ class FaceDetectViewController: UIViewController {
         print("TOGGLE")
     }
 
+    // MARK: - FACE AR TRACKING
+    
     fileprivate func faceTracking() {
         guard let frame = previewView.session.currentFrame else {
             return

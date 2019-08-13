@@ -12,8 +12,11 @@ import VerticalCardSwiper
 
 class ExampleCardCell: CardCell {
     
-    @IBOutlet weak var nameLbl: UILabel!
-    @IBOutlet weak var ageLbl: UILabel!
+    
+    @IBOutlet weak var productImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    
     
     /**
      We use this function to calculate and set a random backgroundcolor.

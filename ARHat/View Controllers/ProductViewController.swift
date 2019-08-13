@@ -13,6 +13,13 @@ class ProductViewController: UIViewController, VerticalCardSwiperDatasource {
     
     private var cardSwiper: VerticalCardSwiper!
     
+    private let hats: [Hat] = [
+        Hat(name: "hat1", price: 69.69, image: UIImage(named: "hat1")!),
+        Hat(name: "hat2", price: 6.66, image: UIImage(named: "hat2")!),
+        Hat(name: "hat3", price: 213.7, image: UIImage(named: "hat3")!)
+    ]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,7 +29,7 @@ class ProductViewController: UIViewController, VerticalCardSwiperDatasource {
         
         cardSwiper = VerticalCardSwiper(frame: viewFrame)
         view.addSubview(cardSwiper)
-        view.backgroundColor = UIColor.red
+        view.backgroundColor = UIColor.white
         
         cardSwiper.datasource = self
         
@@ -34,12 +41,26 @@ class ProductViewController: UIViewController, VerticalCardSwiperDatasource {
     func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
         
         if let cardCell = verticalCardSwiperView.dequeueReusableCell(withReuseIdentifier: "ExampleCell", for: index) as? ExampleCardCell {
+            
+            cardCell.nameLabel.text = String(hats[index].name)
+            cardCell.priceLabel.text = String(hats[index].price)
+            cardCell.productImage.image = hats[index].image
+            cardCell.setRandomBackgroundColor()
+            
             return cardCell
         }
         return CardCell()
     }
     
     func numberOfCards(verticalCardSwiperView: VerticalCardSwiperView) -> Int {
-        return 100
+        return 3
     }
+    @IBAction func buttonTapped(_ sender: UIBarButtonItem) {
+        
+        print("button")
+        
+        performSegue(withIdentifier: "toAR", sender: self)
+        
+    }
+    
 }

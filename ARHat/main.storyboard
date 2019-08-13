@@ -13,15 +13,16 @@
         <scene sceneID="HZ3-U6-hDf">
             <objects>
                 <viewController title="ProductViewController" id="dR5-jH-pa4" customClass="ProductViewController" customModule="ARHat" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="3oq-fG-xh0">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="BYv-Wo-HpK">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Zc1-hC-fIS">
-                                <rect key="frame" x="16" y="7" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
+                    <navigationItem key="navigationItem" title="DRESS ME" id="3oq-fG-xh0">
+                        <barButtonItem key="leftBarButtonItem" title="AR" id="FOO-Hy-sAs">
+                            <connections>
+                                <action selector="buttonTapped:" destination="dR5-jH-pa4" id="9T4-6X-sDA"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="ncF-As-nhy" kind="show" identifier="toAR" id="D6a-nd-Ddd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gPe-bR-gf0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -30,7 +31,7 @@
         <!--Face Detect View Controller-->
         <scene sceneID="Vrk-0e-GuN">
             <objects>
-                <viewController id="ncF-As-nhy" customClass="FaceDetectViewController" customModule="ARHat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ncF-As-nhy" customClass="FaceDetectViewController" customModule="ARHat" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="md0-an-8ej">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,7 +50,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7vI-sA-xe5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="874" y="149"/>
+            <point key="canvasLocation" x="970" y="149"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5ZH-hj-Bjr">
