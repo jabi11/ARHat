@@ -15,7 +15,7 @@ class Hat {
     let price: Float!
     let image: UIImage!
     
-    //TODO: dodac property dla modelu w USDZ
+    //TODO:  dodac property dla modelu w USDZ
     
     init(name: String, price: Float, image: UIImage){
         self.name = name

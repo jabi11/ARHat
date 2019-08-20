@@ -60,8 +60,15 @@ class FaceDetectViewController: UIViewController {
         let scene = SCNScene()
         previewView.scene = scene
         previewView.automaticallyUpdatesLighting = true
+        //previewView.autoenablesDefaultLighting = true
+        
+        let spotLight = SCNNode()
+        spotLight.light = SCNLight()
+        spotLight.light?.type = .directional
+        
+        previewView.scene.rootNode.addChildNode(spotLight)
 
-        timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { [weak self] _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true, block: { [weak self] _ in
             self?.faceTracking()
         })
     }
@@ -93,22 +100,22 @@ class FaceDetectViewController: UIViewController {
 
         models.append(modelRootA)
 
-        guard let activeSceneB = SCNScene(named: "art.scnassets/pink_hat.scn"),
-            let modelRootB = activeSceneB.rootNode.childNode(withName: "Object_1", recursively: false)  else { return }
+        guard let urlB = Bundle.main.url(forResource: "caphat", withExtension: "usdz", subdirectory: "art.scnassets") else { fatalError() }
+        let activeSceneB = try! SCNScene(url: urlB, options: nil)
+        let modelRootB = activeSceneB.rootNode
+        modelRootB.eulerAngles = SCNVector3(0, 3, 0)
 
         self.modelRootB = modelRootB
 
         models.append(modelRootB)
 
-        guard let url = Bundle.main.url(forResource: "Beanie", withExtension: "usdz", subdirectory: "art.scnassets") else { fatalError() }
-        let mdlAsset = MDLAsset(url: url)
-        let activeSceneC = SCNScene(mdlAsset: mdlAsset)
-        let modelRootC = activeSceneC.rootNode.childNode(withName: "Object_1", recursively: true)
-        modelRootC?.scale = SCNVector3(0.65, 0.65, 0.65)
-        //modelRootC?.geometry?.firstMaterial?.diffuse.contents = UIColor.green
+        guard let url = Bundle.main.url(forResource: "beanietx", withExtension: "usdz", subdirectory: "art.scnassets") else { fatalError() }
+        let activeSceneC = try! SCNScene(url: url, options: nil)
+        let modelRootC = activeSceneC.rootNode
+        modelRootC.scale = SCNVector3(0.65, 0.65, 0.65)
 
         self.modelRootC = modelRootC
-        models.append(modelRootC!)
+        models.append(modelRootC)
 
     }
 
@@ -146,24 +153,12 @@ class FaceDetectViewController: UIViewController {
                 node.removeFromParentNode()
             }
             activeNode.addChildNode(models[modelsIndex])
-            print("ACTIVE NODE")
-            print(activeNode)
-            print("MODELS")
-            print(models)
             modelsIndex += 1
             if modelsIndex > models.count-1 {
                 modelsIndex = 0
             }
             return
-        }/* else {
-            modelsIndex = 0
-            activeNode.enumerateChildNodes{ (node, stop) in
-                node.removeFromParentNode()
-            }
-            activeNode.addChildNode(models[modelsIndex])
-            print(activeNode)
-            return
-        }*/
+        }
 
     }
 
@@ -215,6 +210,7 @@ class FaceDetectViewController: UIViewController {
                 activeNode.scale = SCNVector3(face.getFaceSize() * modelScale,
                                                 face.getFaceSize() * modelScale,
                                                 face.getFaceSize() * modelScale)
+                activeNode.eulerAngles = SCNVector3(x: 0, y: Float(truncating: face.getYaw()!), z: 0)
 
                 self.previewView.scene.rootNode.addChildNode(activeNode)
 

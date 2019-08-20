@@ -35,7 +35,6 @@ class ProductViewController: UIViewController, VerticalCardSwiperDatasource {
         
         // register cardcell for storyboard use
         cardSwiper.register(nib: UINib(nibName: "ExampleCell", bundle: nil), forCellWithReuseIdentifier: "ExampleCell")
-        print(viewFrame)
     }
     
     func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
@@ -56,8 +55,6 @@ class ProductViewController: UIViewController, VerticalCardSwiperDatasource {
         return 3
     }
     @IBAction func buttonTapped(_ sender: UIBarButtonItem) {
-        
-        print("button")
         
         performSegue(withIdentifier: "toAR", sender: self)
         

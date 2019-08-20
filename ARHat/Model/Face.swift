@@ -67,6 +67,14 @@ class Face {
         vector = vector / Float(divisor)
         return vector
     }
+    
+    func getYaw() -> NSNumber? {
+        var yaw : NSNumber?
+        for (index, face) in faces2D.enumerated() {
+            yaw = face.yaw
+        }
+        return yaw
+    }
 
     func getFaceSize() -> Float {
         var divisor = 0

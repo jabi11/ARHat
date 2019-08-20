@@ -15,7 +15,8 @@ class Face2D {
 
     let btwEyes: CGPoint
     let chin: CGPoint
-
+    var yaw: NSNumber?
+    
     // MARK: - Setup
 
     init(btwEyes: CGPoint, chin: CGPoint) {
@@ -39,6 +40,9 @@ class Face2D {
 
         let medianLinePoints = medianLineRegion.normalizedPoints
 
+        
+        self.yaw = faceObservation.yaw
+        
         if medianLinePoints.count > 0 {
             var point = __CGPointApplyAffineTransform(medianLinePoints[0], affineTransform)
             point.y = displaySize.height - point.y
