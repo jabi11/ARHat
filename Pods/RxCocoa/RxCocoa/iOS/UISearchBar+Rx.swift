@@ -24,45 +24,46 @@ extension Reactive where Base: UISearchBar {
     public var text: ControlProperty<String?> {
         return value
     }
-
+    
     /// Reactive wrapper for `text` property.
     public var value: ControlProperty<String?> {
         let source: Observable<String?> = Observable.deferred { [weak searchBar = self.base as UISearchBar] () -> Observable<String?> in
             let text = searchBar?.text
 
-            return (searchBar?.rx.delegate.methodInvoked(#selector(UISearchBarDelegate.searchBar(_:textDidChange:))) ?? Observable.empty())
-                    .map { a in
-                        return a[1] as? String
-                    }
+            let textDidChange = (searchBar?.rx.delegate.methodInvoked(#selector(UISearchBarDelegate.searchBar(_:textDidChange:))) ?? Observable.empty())
+            let didEndEditing = (searchBar?.rx.delegate.methodInvoked(#selector(UISearchBarDelegate.searchBarTextDidEndEditing(_:))) ?? Observable.empty())
+            
+            return Observable.merge(textDidChange, didEndEditing)
+                    .map { _ in searchBar?.text ?? "" }
                     .startWith(text)
         }
 
         let bindingObserver = Binder(self.base) { (searchBar, text: String?) in
             searchBar.text = text
         }
-
+        
         return ControlProperty(values: source, valueSink: bindingObserver)
     }
-
+    
     /// Reactive wrapper for `selectedScopeButtonIndex` property.
     public var selectedScopeButtonIndex: ControlProperty<Int> {
         let source: Observable<Int> = Observable.deferred { [weak source = self.base as UISearchBar] () -> Observable<Int> in
             let index = source?.selectedScopeButtonIndex ?? 0
-
+            
             return (source?.rx.delegate.methodInvoked(#selector(UISearchBarDelegate.searchBar(_:selectedScopeButtonIndexDidChange:))) ?? Observable.empty())
                 .map { a in
                     return try castOrThrow(Int.self, a[1])
                 }
                 .startWith(index)
         }
-
+        
         let bindingObserver = Binder(self.base) { (searchBar, index: Int) in
             searchBar.selectedScopeButtonIndex = index
         }
-
+        
         return ControlProperty(values: source, valueSink: bindingObserver)
     }
-
+    
 #if os(iOS)
     /// Reactive wrapper for delegate method `searchBarCancelButtonClicked`.
     public var cancelButtonClicked: ControlEvent<Void> {
@@ -91,7 +92,7 @@ extension Reactive where Base: UISearchBar {
 		return ControlEvent(events: source)
 	}
 #endif
-
+	
     /// Reactive wrapper for delegate method `searchBarSearchButtonClicked`.
     public var searchButtonClicked: ControlEvent<Void> {
         let source: Observable<Void> = self.delegate.methodInvoked(#selector(UISearchBarDelegate.searchBarSearchButtonClicked(_:)))
@@ -100,7 +101,7 @@ extension Reactive where Base: UISearchBar {
         }
         return ControlEvent(events: source)
     }
-
+	
 	/// Reactive wrapper for delegate method `searchBarTextDidBeginEditing`.
 	public var textDidBeginEditing: ControlEvent<Void> {
 		let source: Observable<Void> = self.delegate.methodInvoked(#selector(UISearchBarDelegate.searchBarTextDidBeginEditing(_:)))
@@ -109,7 +110,7 @@ extension Reactive where Base: UISearchBar {
 		}
 		return ControlEvent(events: source)
 	}
-
+	
 	/// Reactive wrapper for delegate method `searchBarTextDidEndEditing`.
 	public var textDidEndEditing: ControlEvent<Void> {
 		let source: Observable<Void> = self.delegate.methodInvoked(#selector(UISearchBarDelegate.searchBarTextDidEndEditing(_:)))
@@ -118,7 +119,18 @@ extension Reactive where Base: UISearchBar {
 		}
 		return ControlEvent(events: source)
 	}
-
+  
+    /// Installs delegate as forwarding delegate on `delegate`.
+    /// Delegate won't be retained.
+    ///
+    /// It enables using normal delegate mechanism with reactive delegate mechanism.
+    ///
+    /// - parameter delegate: Delegate object.
+    /// - returns: Disposable object that can be used to unbind the delegate.
+    public func setDelegate(_ delegate: UISearchBarDelegate)
+        -> Disposable {
+        return RxSearchBarDelegateProxy.installForwardDelegate(delegate, retainDelegate: false, onProxyForObject: self.base)
+    }
 }
 
 #endif

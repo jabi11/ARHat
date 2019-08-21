@@ -16,7 +16,7 @@ import UIKit
 #endif
 
 extension Reactive where Base: UIControl {
-
+    
     /// Bindable sink for `enabled` property.
     public var isEnabled: Binder<Bool> {
         return Binder(self.base) { control, value in
@@ -36,15 +36,14 @@ extension Reactive where Base: UIControl {
     /// - parameter controlEvents: Filter for observed event types.
     public func controlEvent(_ controlEvents: UIControlEvents) -> ControlEvent<()> {
         let source: Observable<Void> = Observable.create { [weak control = self.base] observer in
-                MainScheduler.ensureExecutingOnScheduler()
+                MainScheduler.ensureRunningOnMainThread()
 
                 guard let control = control else {
                     observer.on(.completed)
                     return Disposables.create()
                 }
 
-                let controlTarget = ControlTarget(control: control, controlEvents: controlEvents) {
-                    _ in
+                let controlTarget = ControlTarget(control: control, controlEvents: controlEvents) { _ in
                     observer.on(.next(()))
                 }
 
@@ -78,7 +77,7 @@ extension Reactive where Base: UIControl {
                         observer.on(.next(getter(control)))
                     }
                 }
-
+                
                 return Disposables.create(with: controlTarget.dispose)
             }
             .takeUntil(deallocated)

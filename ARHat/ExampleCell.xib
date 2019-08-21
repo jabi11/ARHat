@@ -33,11 +33,17 @@
                         <rect key="frame" x="212" y="381" width="107" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="Try on"/>
+                        <connections>
+                            <action selector="TryOn:" destination="YrG-n3-lce" eventType="touchUpInside" id="61b-BN-8Rn"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJk-sQ-ZNG">
                         <rect key="frame" x="20" y="381" width="79" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="Add to Cart"/>
+                        <connections>
+                            <action selector="addToCart:" destination="YrG-n3-lce" eventType="touchUpInside" id="VwL-kJ-zcc"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uvg-av-oj0">
                         <rect key="frame" x="30" y="287" width="170" height="21"/>

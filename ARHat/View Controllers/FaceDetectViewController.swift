@@ -11,7 +11,6 @@ import UIKit
 import AVKit
 import Vision
 import ARKit
-import SceneKit.ModelIO
 
 class FaceDetectViewController: UIViewController {
 
@@ -30,33 +29,16 @@ class FaceDetectViewController: UIViewController {
     var lastLineNode: [SCNNode] = []
     //1. Variable To Store Our MainContentHolder
     var activeNode = SCNNode()
-
-    //2. Variable To Determine Whether We Have Created Our Intial Content
-    var initialModelSet = false
-
+    
+    public var model: String = ""
     //3. Our Dyanmic Scenes
-    var modelRootA: SCNNode!
-    var modelRootB: SCNNode!
-    var modelRootC: SCNNode!
-
-    var models: [SCNNode] = []
-    var modelsIndex = 0
+    var modelRoot: SCNNode!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupScenes()
-        toggleScenes()
-        
-        
-        let left = UISwipeGestureRecognizer(target: self, action: #selector(FaceDetectViewController.leftSwipe))
-        left.direction = .left
-        self.previewView.addGestureRecognizer(left)
-
-        let right = UISwipeGestureRecognizer(target: self, action: #selector(FaceDetectViewController.rightSwipe))
-        right.direction = .right
-        self.previewView.addGestureRecognizer(right)
-
+    
         let scene = SCNScene()
         previewView.scene = scene
         previewView.automaticallyUpdatesLighting = true
@@ -90,36 +72,16 @@ class FaceDetectViewController: UIViewController {
     // MARK: - Setup Scenes
     func setupScenes() {
 
-        guard let activeSceneA = SCNScene(named: "art.scnassets/blsmpht2.dae"),
-            let modelRootA = activeSceneA.rootNode.childNode(withName: "Cylinder", recursively: false)  else { return }
+        guard let urlB = Bundle.main.url(forResource: model, withExtension: "usdz", subdirectory: "art.scnassets") else { fatalError() }
+        let activeScene = try! SCNScene(url: urlB, options: nil)
+        let modelRoot = activeScene.rootNode
+        modelRoot.eulerAngles = SCNVector3(0, 3, 0)
 
-        modelRootA.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "check")
-        modelRootA.scale = SCNVector3(1, 0.05, 1)
-
-        self.modelRootA = modelRootA
-
-        models.append(modelRootA)
-
-        guard let urlB = Bundle.main.url(forResource: "caphat", withExtension: "usdz", subdirectory: "art.scnassets") else { fatalError() }
-        let activeSceneB = try! SCNScene(url: urlB, options: nil)
-        let modelRootB = activeSceneB.rootNode
-        modelRootB.eulerAngles = SCNVector3(0, 3, 0)
-
-        self.modelRootB = modelRootB
-
-        models.append(modelRootB)
-
-        guard let url = Bundle.main.url(forResource: "beanietx", withExtension: "usdz", subdirectory: "art.scnassets") else { fatalError() }
-        let activeSceneC = try! SCNScene(url: url, options: nil)
-        let modelRootC = activeSceneC.rootNode
-        modelRootC.scale = SCNVector3(0.65, 0.65, 0.65)
-
-        self.modelRootC = modelRootC
-        models.append(modelRootC)
-
+        self.modelRoot = modelRoot
+        
     }
 
-    func toggleScenes() {
+   /* func toggleScenes() {
 
          /*//1. If The 1st Model Is Displayed Then Remove It & Add The 2nd Model
         if activeNode.childNodes.contains(modelRootA) || !initialModelSet {
@@ -172,7 +134,7 @@ class FaceDetectViewController: UIViewController {
     func rightSwipe() {
         toggleScenes()
         print("TOGGLE")
-    }
+    } */
 
     // MARK: - FACE AR TRACKING
     

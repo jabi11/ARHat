@@ -27,7 +27,8 @@ import var Foundation.NSURLErrorDomain
 import RxSwift
 
 /// RxCocoa URL errors.
-public enum RxCocoaURLError: Swift.Error {
+public enum RxCocoaURLError
+    : Swift.Error {
     /// Unknown error occurred.
     case unknown
     /// Response is not NSHTTPURLResponse
@@ -38,7 +39,8 @@ public enum RxCocoaURLError: Swift.Error {
     case deserializationError(error: Swift.Error)
 }
 
-extension RxCocoaURLError: CustomDebugStringConvertible {
+extension RxCocoaURLError
+    : CustomDebugStringConvertible {
     /// A textual representation of `self`, suitable for debugging.
     public var debugDescription: String {
         switch self {
@@ -55,10 +57,10 @@ extension RxCocoaURLError: CustomDebugStringConvertible {
 }
 
 private func escapeTerminalString(_ value: String) -> String {
-    return value.replacingOccurrences(of: "\"", with: "\\\"", options: [], range: nil)
+    return value.replacingOccurrences(of: "\"", with: "\\\"", options:[], range: nil)
 }
 
-private func convertURLRequestToCurlCommand(_ request: URLRequest) -> String {
+fileprivate func convertURLRequestToCurlCommand(_ request: URLRequest) -> String {
     let method = request.httpMethod ?? "GET"
     var returnValue = "curl -X \(method) "
 
@@ -90,7 +92,8 @@ private func convertResponseToString(_ response: URLResponse?, _ error: NSError?
     if let response = response as? HTTPURLResponse {
         if 200 ..< 300 ~= response.statusCode {
             return "Success (\(ms)ms): Status \(response.statusCode)"
-        } else {
+        }
+        else {
             return "Failure (\(ms)ms): Status \(response.statusCode)"
         }
     }
@@ -126,11 +129,12 @@ extension Reactive where Base: URLSession {
 
             if Logging.URLRequests(request) {
                 d = Date()
-            } else {
+            }
+            else {
                d = nil
             }
 
-            let task = self.base.dataTask(with: request) { (data, response, error) in
+            let task = self.base.dataTask(with: request) { data, response, error in
 
                 if Logging.URLRequests(request) {
                     let interval = Date().timeIntervalSince(d ?? Date())
@@ -141,7 +145,7 @@ extension Reactive where Base: URLSession {
                         print(convertResponseToString(response, error.map { $0 as NSError }, interval))
                     #endif
                 }
-
+                
                 guard let response = response, let data = data else {
                     observer.on(.error(error ?? RxCocoaURLError.unknown))
                     return
@@ -178,10 +182,11 @@ extension Reactive where Base: URLSession {
     - returns: Observable sequence of response data.
     */
     public func data(request: URLRequest) -> Observable<Data> {
-        return response(request: request).map { pair -> Data in
+        return self.response(request: request).map { pair -> Data in
             if 200 ..< 300 ~= pair.0.statusCode {
                 return pair.1
-            } else {
+            }
+            else {
                 throw RxCocoaURLError.httpRequestFailed(response: pair.0, data: pair.1)
             }
         }
@@ -205,7 +210,7 @@ extension Reactive where Base: URLSession {
     - returns: Observable sequence of response JSON.
     */
     public func json(request: URLRequest, options: JSONSerialization.ReadingOptions = []) -> Observable<Any> {
-        return data(request: request).map { (data) -> Any in
+        return self.data(request: request).map { data -> Any in
             do {
                 return try JSONSerialization.jsonObject(with: data, options: options)
             } catch let error {
@@ -232,6 +237,7 @@ extension Reactive where Base: URLSession {
     - returns: Observable sequence of response JSON.
     */
     public func json(url: Foundation.URL) -> Observable<Any> {
-        return json(request: URLRequest(url: url))
+        return self.json(request: URLRequest(url: url))
     }
 }
+

@@ -22,6 +22,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="ncF-As-nhy" kind="show" identifier="toAR" id="D6a-nd-Ddd"/>
+                        <segue destination="ncF-As-nhy" kind="show" identifier="menuToAR" id="JmG-yt-EXC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gPe-bR-gf0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -71,4 +72,7 @@
             <point key="canvasLocation" x="-705" y="149"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="JmG-yt-EXC"/>
+    </inferredMetricsTieBreakers>
 </document>

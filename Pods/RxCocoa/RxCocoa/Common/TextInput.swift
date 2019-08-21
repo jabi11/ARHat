@@ -69,8 +69,10 @@ import RxSwift
     extension Reactive where Base: NSTextField, Base: NSTextInputClient {
         /// Reactive text input.
         public var textInput: TextInput<Base> {
-            return TextInput(base: base, text: self.text)
+            return TextInput(base: self.base, text: self.text)
         }
     }
 
 #endif
+
+
