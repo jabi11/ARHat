@@ -9,6 +9,8 @@
 
 import RxSwift
 
+
+
 // 2
 
 extension SharedSequence {
@@ -86,6 +88,8 @@ extension SharedSequenceConvertibleType where E == Any {
         return SharedSequence<O1.SharingStrategy, (O1.E, O2.E)>(source)
     }
 }
+
+
 
 // 3
 
@@ -168,6 +172,8 @@ extension SharedSequenceConvertibleType where E == Any {
         return SharedSequence<O1.SharingStrategy, (O1.E, O2.E, O3.E)>(source)
     }
 }
+
+
 
 // 4
 
@@ -254,6 +260,8 @@ extension SharedSequenceConvertibleType where E == Any {
         return SharedSequence<O1.SharingStrategy, (O1.E, O2.E, O3.E, O4.E)>(source)
     }
 }
+
+
 
 // 5
 
@@ -344,6 +352,8 @@ extension SharedSequenceConvertibleType where E == Any {
         return SharedSequence<O1.SharingStrategy, (O1.E, O2.E, O3.E, O4.E, O5.E)>(source)
     }
 }
+
+
 
 // 6
 
@@ -438,6 +448,8 @@ extension SharedSequenceConvertibleType where E == Any {
         return SharedSequence<O1.SharingStrategy, (O1.E, O2.E, O3.E, O4.E, O5.E, O6.E)>(source)
     }
 }
+
+
 
 // 7
 
@@ -536,6 +548,8 @@ extension SharedSequenceConvertibleType where E == Any {
         return SharedSequence<O1.SharingStrategy, (O1.E, O2.E, O3.E, O4.E, O5.E, O6.E, O7.E)>(source)
     }
 }
+
+
 
 // 8
 
@@ -638,3 +652,5 @@ extension SharedSequenceConvertibleType where E == Any {
         return SharedSequence<O1.SharingStrategy, (O1.E, O2.E, O3.E, O4.E, O5.E, O6.E, O7.E, O8.E)>(source)
     }
 }
+
+

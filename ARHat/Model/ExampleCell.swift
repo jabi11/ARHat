@@ -16,7 +16,12 @@ class ExampleCardCell: CardCell {
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBAction func addToCart(_ sender: UIButton) {
+    }
     
+    @IBAction func TryOn(_ sender: UIButton) {
+        
+    }
     
     /**
      We use this function to calculate and set a random backgroundcolor.

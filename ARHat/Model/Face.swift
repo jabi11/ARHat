@@ -70,7 +70,7 @@ class Face {
     
     func getYaw() -> NSNumber? {
         var yaw : NSNumber?
-        for (index, face) in faces2D.enumerated() {
+        for (_, face) in faces2D.enumerated() {
             yaw = face.yaw
         }
         return yaw
