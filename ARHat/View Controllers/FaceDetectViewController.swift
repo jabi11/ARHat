@@ -39,6 +39,8 @@ class FaceDetectViewController: UIViewController {
         
         setupScenes()
     
+        print("model: \(model)")
+        
         let scene = SCNScene()
         previewView.scene = scene
         previewView.automaticallyUpdatesLighting = true
@@ -79,63 +81,11 @@ class FaceDetectViewController: UIViewController {
 
         self.modelRoot = modelRoot
         
-    }
-
-   /* func toggleScenes() {
-
-         /*//1. If The 1st Model Is Displayed Then Remove It & Add The 2nd Model
-        if activeNode.childNodes.contains(modelRootA) || !initialModelSet {
-            initialModelSet = true
-            print("CZAPKA")
-            modelRootA.removeFromParentNode()
-            activeNode.addChildNode(modelRootB)
-            return
-        }
+        activeNode.addChildNode(modelRoot)
         
-        //2. If The 2nd Model Is Displayed Then Remove It & Add The 1st Modle
-        if activeNode.childNodes.contains(modelRootB){
-            print("CYLINDER")
-            modelRootB.removeFromParentNode()
-            activeNode.addChildNode(modelRootA)
-            return
-        }
-        
-        if activeNode.childNodes.contains(modelRootA) || !initialModelSet {
-            initialModelSet = true
-            print("Beanie")
-            modelRootA.removeFromParentNode()
-            activeNode.addChildNode(modelRootC)
-            return
-        } */
-
-        print(modelsIndex)
-
-        if modelsIndex < models.count {
-            activeNode.enumerateChildNodes { (node, _) in
-                node.removeFromParentNode()
-            }
-            activeNode.addChildNode(models[modelsIndex])
-            modelsIndex += 1
-            if modelsIndex > models.count-1 {
-                modelsIndex = 0
-            }
-            return
-        }
-
     }
 
-    @objc
-    func leftSwipe() {
-        toggleScenes()
-        print("TOGGLE")
-    }
-
-    @objc
-    func rightSwipe() {
-        toggleScenes()
-        print("TOGGLE")
-    } */
-
+   
     // MARK: - FACE AR TRACKING
     
     fileprivate func faceTracking() {

@@ -9,9 +9,11 @@
 import Foundation
 import VerticalCardSwiper
 
-class ProductViewController: UIViewController, VerticalCardSwiperDatasource {
+class ProductViewController: UIViewController, VerticalCardSwiperDatasource, VerticalCardSwiperDelegate {
     
     private var cardSwiper: VerticalCardSwiper!
+    
+    var currentModel: String = ""
     
     private let hats: [Hat] = [
         Hat(name: "hat1", price: 69.69, image: UIImage(named: "hat1")!, usdzName: "caphat"),
@@ -32,6 +34,7 @@ class ProductViewController: UIViewController, VerticalCardSwiperDatasource {
         view.backgroundColor = UIColor.white
         
         cardSwiper.datasource = self
+        cardSwiper.delegate = self
         
         // register cardcell for storyboard use
         cardSwiper.register(nib: UINib(nibName: "ExampleCell", bundle: nil), forCellWithReuseIdentifier: "ExampleCell")
@@ -51,6 +54,15 @@ class ProductViewController: UIViewController, VerticalCardSwiperDatasource {
         return CardCell()
     }
     
+    func didTapCard(verticalCardSwiperView: VerticalCardSwiperView, index: Int) {
+        currentModel = hats[index].usdzName
+        performSegue(withIdentifier: "menuToAR", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as? FaceDetectViewController
+        vc?.model = currentModel
+    }
     
     /*func didTapCard(verticalCardSwiperView: VerticalCardSwiperView, index: Int) {
         print("Tapped \(index)")
