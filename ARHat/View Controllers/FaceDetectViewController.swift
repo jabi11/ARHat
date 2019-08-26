@@ -77,7 +77,6 @@ class FaceDetectViewController: UIViewController {
         guard let urlB = Bundle.main.url(forResource: model, withExtension: "usdz", subdirectory: "art.scnassets") else { fatalError() }
         let activeScene = try! SCNScene(url: urlB, options: nil)
         let modelRoot = activeScene.rootNode
-        modelRoot.eulerAngles = SCNVector3(0, 3, 0)
 
         self.modelRoot = modelRoot
         
