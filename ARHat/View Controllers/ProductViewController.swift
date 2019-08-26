@@ -16,7 +16,7 @@ class ProductViewController: UIViewController, VerticalCardSwiperDatasource, Ver
     var currentModel: String = ""
     
     private let hats: [Hat] = [
-        Hat(name: "Cap", price: 69.69, image: UIImage(named: "hat1")!, usdzName: "caphat"),
+        Hat(name: "Cap", price: 69.69, image: UIImage(named: "hat1")!, usdzName: "capblue"),
         Hat(name: "Beanie rasta", price: 6.66, image: UIImage(named: "hat2")!, usdzName: "beanietx"),
         Hat(name: "Beanie green", price: 213.7, image: UIImage(named: "hat3")!, usdzName: "BEANIEUSDZ")
     ]
