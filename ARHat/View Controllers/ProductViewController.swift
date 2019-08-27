@@ -13,7 +13,7 @@ class ProductViewController: UIViewController, VerticalCardSwiperDatasource, Ver
     
     private var cardSwiper: VerticalCardSwiper!
     
-    var currentModel: String = ""
+    private var currentModel: String = ""
     
     private let hats: [Hat] = [
         Hat(name: "Cap", price: 69.69, image: UIImage(named: "hat1")!, usdzName: "capblue"),
@@ -49,8 +49,13 @@ class ProductViewController: UIViewController, VerticalCardSwiperDatasource, Ver
             cardCell.productImage.image = hats[index].image
             cardCell.setRandomBackgroundColor()
             
+            cardCell.callback = {
+                addToCart(item: self.hats[index])
+            }
+            
             return cardCell
         }
+        
         return CardCell()
     }
     
@@ -59,25 +64,33 @@ class ProductViewController: UIViewController, VerticalCardSwiperDatasource, Ver
         performSegue(withIdentifier: "menuToAR", sender: self)
     }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as? FaceDetectViewController
         vc?.model = currentModel
     }
     
-    /*func didTapCard(verticalCardSwiperView: VerticalCardSwiperView, index: Int) {
-        print("Tapped \(index)")
-        print(hats[index].usdzName)
-        FaceDetectViewController().model = hats[index].usdzName
-        performSegue(withIdentifier: "menuToAR", sender: self)
-    } */
-    
     func numberOfCards(verticalCardSwiperView: VerticalCardSwiperView) -> Int {
         return 3
     }
+    
+    
     @IBAction func buttonTapped(_ sender: UIBarButtonItem) {
         
         performSegue(withIdentifier: "toAR", sender: self)
         
     }
+    
+   
+    @IBAction func cartTapped(_ sender: UIBarButtonItem) {
+        
+        performSegue(withIdentifier: "menuToCart", sender: self)
+        
+    }
+    
+    public func getCurrentIndex() -> Void {
+        print(String(cardSwiper.focussedCardIndex!))
+    }
+    
     
 }

@@ -13,13 +13,20 @@ import VerticalCardSwiper
 class ExampleCardCell: CardCell {
     
     
+    var callback: (()->Void)?
+    
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBAction func addToCart(_ sender: UIButton) {
+        
+        callback?()
     }
     
     @IBAction func TryOn(_ sender: UIButton) {
+        
+        callback?()
+        print("TRY ON")
         
     }
     

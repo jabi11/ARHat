@@ -32,6 +32,7 @@
 		8EBD33F9230170C800FFC437 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD33F8230170C800FFC437 /* ProductViewController.swift */; };
 		8EBD33FB2301718000FFC437 /* ExampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD33FA2301718000FFC437 /* ExampleCell.swift */; };
 		8EBD33FD23017CD400FFC437 /* ExampleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EBD33FC23017CD400FFC437 /* ExampleCell.xib */; };
+		8EC09DE123154AFE0097554C /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC09DE023154AFE0097554C /* CartViewController.swift */; };
 		CE53EAA4DD7E507B674B48DE /* Pods_ARWig.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2098AF6A206BD50DAEB4790 /* Pods_ARWig.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		8EBD33F8230170C800FFC437 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		8EBD33FA2301718000FFC437 /* ExampleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCell.swift; sourceTree = "<group>"; };
 		8EBD33FC23017CD400FFC437 /* ExampleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExampleCell.xib; sourceTree = "<group>"; };
+		8EC09DE023154AFE0097554C /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		92C017D6BEB89F48B746141F /* Pods-ARHat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARHat.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARHat/Pods-ARHat.release.xcconfig"; sourceTree = "<group>"; };
 		939BF35EEBFEC48D1E1915D8 /* Pods-ARHat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARHat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARHat/Pods-ARHat.debug.xcconfig"; sourceTree = "<group>"; };
 		9BFAFEB42C39C7722F7E664E /* Pods-ARWig.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARWig.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARWig/Pods-ARWig.debug.xcconfig"; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 		3805994121C2A72E00FC096D /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8EC09DE023154AFE0097554C /* CartViewController.swift */,
 				8EBD33F8230170C800FFC437 /* ProductViewController.swift */,
 				3805994221C2A72E00FC096D /* FaceDetectViewController.xib */,
 				3805994321C2A72E00FC096D /* FaceDetectViewController.swift */,
@@ -329,6 +332,7 @@
 				8EBD33FB2301718000FFC437 /* ExampleCell.swift in Sources */,
 				8EBD33F9230170C800FFC437 /* ProductViewController.swift in Sources */,
 				38F70EFA2195B9B9005E65E5 /* AppDelegate.swift in Sources */,
+				8EC09DE123154AFE0097554C /* CartViewController.swift in Sources */,
 				38F70F122195BCA6005E65E5 /* BaseCoordinator.swift in Sources */,
 				38029B78219DB7CF00EEDA8B /* Face2D.swift in Sources */,
 				38F70F112195BCA6005E65E5 /* MainCoordinator.swift in Sources */,
