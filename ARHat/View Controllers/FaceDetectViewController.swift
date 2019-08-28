@@ -22,7 +22,7 @@ class FaceDetectViewController: UIViewController {
 
     // MARK: - Properties
     let faceProportion: Float = 1.5
-    let modelScale: Float = 1
+    let modelScale: Float = 1.4
 
     var faces: [Face2D] = []
     var timer: Timer!
@@ -33,6 +33,7 @@ class FaceDetectViewController: UIViewController {
     public var model: String = ""
     //3. Our Dyanmic Scenes
     var modelRoot: SCNNode!
+    var maxFaceWidth: Float = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,17 +111,19 @@ class FaceDetectViewController: UIViewController {
             FaceManager.sharedInstance.deleteUnusedFaces()
             for face in FaceManager.sharedInstance.lastFaces {
                 let facePosition = face.getPosition()
-                //let hattrickNode = ModelsManager.sharedInstance.getNode(forIndex: index, model: model)
+                let faceContour = face.getFaceContour()
+                print(faceContour)
+                let faceWidth = Float(distance(faceContour[0], faceContour[faceContour.count - 1]))
+                if faceWidth > maxFaceWidth * 0.9 || faceWidth < maxFaceWidth * 0.8 {
+                    maxFaceWidth = faceWidth
+                }
+                print(faceWidth)
                 activeNode.position = facePosition
                 activeNode.position.y += face.getFaceSize() * 1.1
                 ModelsManager.sharedInstance.models.append(activeNode)
-                //hattrickNode.infiniteRotation(x: 0, y: Float.pi, z: 0, duration: 5.0)
-//                    let move = SCNAction.moveBy(x: CGFloat(facePosition.x - hattrickNode.position.x), y: 0,
-//                        z: CGFloat(facePosition.z - hattrickNode.position.z), duration: 0.05)
-//                    hattrickNode.runAction(move)
-                activeNode.scale = SCNVector3(face.getFaceSize() * modelScale,
+                activeNode.scale = SCNVector3(face.getFaceSize() * maxFaceWidth * modelScale,
                                                 face.getFaceSize() * modelScale,
-                                                face.getFaceSize() * modelScale)
+                                                face.getFaceSize() * maxFaceWidth * modelScale)
                 activeNode.eulerAngles = SCNVector3(x: 0, y: Float(truncating: face.getYaw()!), z: 0)
 
                 self.previewView.scene.rootNode.addChildNode(activeNode)
@@ -131,4 +134,10 @@ class FaceDetectViewController: UIViewController {
         }
     }
 
+    func distance(_ a: CGPoint, _ b: CGPoint) -> CGFloat {
+        let xDist = a.x - b.x
+        let yDist = a.y - b.y
+        return CGFloat(sqrt(xDist * xDist + yDist * yDist))
+    }
+    
 }

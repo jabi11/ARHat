@@ -16,6 +16,7 @@ class Face2D {
     let btwEyes: CGPoint
     let chin: CGPoint
     var yaw: NSNumber?
+    var faceContourPoints: [CGPoint]?
     
     // MARK: - Setup
 
@@ -51,10 +52,10 @@ class Face2D {
             return nil
         }
 
-        let faceContourPoints = faceContourRegion.normalizedPoints
-        if faceContourPoints.count > 0 {
-            let index = (faceContourPoints.count / 2)
-            var point3 = __CGPointApplyAffineTransform(faceContourPoints[index], affineTransform)
+        self.faceContourPoints = faceContourRegion.normalizedPoints
+        if faceContourPoints!.count > 0 {
+            let index = (faceContourPoints!.count / 2)
+            var point3 = __CGPointApplyAffineTransform(faceContourPoints![index], affineTransform)
             point3.y = displaySize.height - point3.y
             self.chin = point3
         } else {

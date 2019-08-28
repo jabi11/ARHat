@@ -76,6 +76,15 @@ class Face {
         return yaw
     }
 
+    func getFaceContour() -> [CGPoint] {
+        var points: [CGPoint] = []
+        for (_, face) in faces2D.enumerated() {
+            points = face.faceContourPoints!
+        }
+        return points
+    }
+    
+    
     func getFaceSize() -> Float {
         var divisor = 0
         var size: Float = 0
