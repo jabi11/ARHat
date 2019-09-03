@@ -27,6 +27,7 @@
 		38F70F132195BCA6005E65E5 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F70F102195BCA6005E65E5 /* AppCoordinator.swift */; };
 		38F70F202199EAE9005E65E5 /* FaceTrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F70F1F2199EAE9005E65E5 /* FaceTrackingManager.swift */; };
 		38F70F27219B57BB005E65E5 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 38F70F26219B57BB005E65E5 /* art.scnassets */; };
+		8E1D0FF2231F220C00910E17 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1D0FF1231F220C00910E17 /* InfoViewController.swift */; };
 		8E661F0B2301E61500594F6C /* HatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E661F0A2301E61500594F6C /* HatModel.swift */; };
 		8E883823231DCCE700357026 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E883822231DCCE700357026 /* MenuCell.swift */; };
 		8EBD33F52301622200FFC437 /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EBD33F42301622200FFC437 /* main.storyboard */; };
@@ -57,6 +58,7 @@
 		38F70F102195BCA6005E65E5 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		38F70F1F2199EAE9005E65E5 /* FaceTrackingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceTrackingManager.swift; sourceTree = "<group>"; };
 		38F70F26219B57BB005E65E5 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		8E1D0FF1231F220C00910E17 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		8E661F0A2301E61500594F6C /* HatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatModel.swift; sourceTree = "<group>"; };
 		8E883822231DCCE700357026 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		8EBD33F42301622200FFC437 /* main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = main.storyboard; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				8EC09DE023154AFE0097554C /* CartViewController.swift */,
+				8E1D0FF1231F220C00910E17 /* InfoViewController.swift */,
 				8EBD33F8230170C800FFC437 /* ProductViewController.swift */,
 				3805994221C2A72E00FC096D /* FaceDetectViewController.xib */,
 				3805994321C2A72E00FC096D /* FaceDetectViewController.swift */,
@@ -331,6 +334,7 @@
 				38029B78219DB7CF00EEDA8B /* Face2D.swift in Sources */,
 				38F70F112195BCA6005E65E5 /* MainCoordinator.swift in Sources */,
 				38D9EF0421C2C0FF00657BE7 /* FaceDetectViewController.swift in Sources */,
+				8E1D0FF2231F220C00910E17 /* InfoViewController.swift in Sources */,
 				388F453E21C989100006B10C /* CGPoint+Arithmetic.swift in Sources */,
 				38A85E6021A482B300E09C59 /* ModelsManager.swift in Sources */,
 				38029B7A219DE97800EEDA8B /* Face3D.swift in Sources */,

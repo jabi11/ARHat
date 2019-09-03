@@ -10,9 +10,16 @@ import UIKit
 
 class MenuCellClass: UICollectionViewCell {
     
+    var callback: (()->Void)?
+    
     @IBOutlet weak var HatImage: UIImageView!
     
     @IBOutlet weak var HatName: UILabel!
     
     @IBOutlet weak var PriceLabel: UILabel!
+    
+    @IBAction func addButton(_ sender: UIButton) {
+        callback?()
+    }
+    
 }

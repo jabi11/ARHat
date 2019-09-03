@@ -38,7 +38,28 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         cell.HatImage.image = hats[indexPath.row].image
         cell.HatName.text = String(hats[indexPath.row].name)
+        cell.HatName.sizeToFit()
         cell.PriceLabel.text = String(hats[indexPath.row].price)
+        cell.PriceLabel.sizeToFit()
+        
+        cell.callback = {
+            addToCart(item: self.hats[indexPath.row])
+        }
+        
+        
+        cell.contentView.layer.cornerRadius = 2.0
+//        //cell.contentView.layer.borderWidth = 1.0
+//        //cell.contentView.layer.borderColor = UIColor.clear.cgColor
+//        cell.contentView.layer.masksToBounds = true
+//        cell.HatImage.layer.shadowOpacity = 0.0
+//        cell.HatImage.layer.shadowRadius = 0.0
+        
+        cell.layer.shadowColor = UIColor.lightGray.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)//CGSizeMake(0, 2.0);
+        cell.layer.shadowRadius = 6.0
+        cell.layer.shadowOpacity = 1.0
+        cell.layer.masksToBounds = false
+        cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
         
         return cell
     }
@@ -48,17 +69,17 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
         performSegue(withIdentifier: "menuToAR", sender: self)
     }
     
-   /* func didTapCard(verticalCardSwiperView: VerticalCardSwiperView, index: Int) {
-        currentModel = hats[index].usdzName
-        performSegue(withIdentifier: "menuToAR", sender: self)
-    } */
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as? FaceDetectViewController
         vc?.model = currentModel
     }
  
+    
+    @IBAction func cartTapped(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "menuToCart", sender: self)
+    }
+    
     
     
 }
