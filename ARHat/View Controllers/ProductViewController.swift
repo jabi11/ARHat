@@ -13,11 +13,11 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     
     @IBOutlet var CollectionView: UICollectionView!
-    private var currentModel: String = ""
+    private var currentHat: Hat!
     
     private let hats: [Hat] = [
-        Hat(name: "Cap", price: 69.69, image: UIImage(named: "cap")!, usdzName: "capdobre1"),
-        Hat(name: "Beanie wool", price: 6.66, image: UIImage(named: "beanie")!, usdzName: "BEANIEDOBRE1")
+        Hat(name: "Cap", price: 120, image: UIImage(named: "cap")!, usdzName: "capdobre1"),
+        Hat(name: "Beanie wool", price: 150, image: UIImage(named: "beanie")!, usdzName: "BEANIEDOBRE1")
     ]
     
     
@@ -27,6 +27,14 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
         CollectionView.delegate = self
         CollectionView.dataSource = self
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -39,7 +47,7 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
         cell.HatImage.image = hats[indexPath.row].image
         cell.HatName.text = String(hats[indexPath.row].name)
         cell.HatName.sizeToFit()
-        cell.PriceLabel.text = String(hats[indexPath.row].price)
+        cell.PriceLabel.text = String(hats[indexPath.row].price) + "PLN"
         cell.PriceLabel.sizeToFit()
         
         cell.callback = {
@@ -65,21 +73,15 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        currentModel = hats[indexPath.row].usdzName
-        performSegue(withIdentifier: "menuToAR", sender: self)
+        currentHat = hats[indexPath.row]
+        performSegue(withIdentifier: "menuToInfo", sender: self)
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as? FaceDetectViewController
-        vc?.model = currentModel
+        let vc = segue.destination as? InfoViewController
+        vc?.currentHat = currentHat
     }
- 
-    
-    @IBAction func cartTapped(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "menuToCart", sender: self)
-    }
-    
     
     
 }

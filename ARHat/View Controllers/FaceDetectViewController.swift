@@ -39,8 +39,6 @@ class FaceDetectViewController: UIViewController {
         super.viewDidLoad()
         
         setupScenes()
-    
-        print("model: \(model)")
         
         let scene = SCNScene()
         previewView.scene = scene
@@ -112,12 +110,10 @@ class FaceDetectViewController: UIViewController {
             for face in FaceManager.sharedInstance.lastFaces {
                 let facePosition = face.getPosition()
                 let faceContour = face.getFaceContour()
-                print(faceContour)
                 let faceWidth = Float(distance(faceContour[0], faceContour[faceContour.count - 1]))
                 if faceWidth > maxFaceWidth * 0.9 || faceWidth < maxFaceWidth * 0.8 {
                     maxFaceWidth = faceWidth
                 }
-                print(faceWidth)
                 activeNode.position = facePosition
                 activeNode.position.y += face.getFaceSize() * 1.1
                 ModelsManager.sharedInstance.models.append(activeNode)
