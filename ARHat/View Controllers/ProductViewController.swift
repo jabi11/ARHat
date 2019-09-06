@@ -17,7 +17,7 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     private let hats: [Hat] = [
         Hat(name: "Cap", price: 120, image: UIImage(named: "cap")!, usdzName: "capdobre1"),
-        Hat(name: "Beanie wool", price: 150, image: UIImage(named: "beanie")!, usdzName: "BEANIEDOBRE1")
+        Hat(name: "Beanie", price: 150, image: UIImage(named: "beanie")!, usdzName: "BEANIEDOBRE1")
     ]
     
     
