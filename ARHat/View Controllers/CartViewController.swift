@@ -25,7 +25,12 @@ class CartViewController: UITableViewController{
     
     @IBOutlet weak var totalLabel: UILabel!
     
+    @IBOutlet weak var footerView: UIView!
+    
+    
     override func viewDidLoad() {
+        self.tableView.separatorStyle = .none
+        
         updateTotal()
     }
     
@@ -47,14 +52,25 @@ class CartViewController: UITableViewController{
         let item = items[indexPath.row]
         
         cell.cartName?.text = item.name
-        cell.cartPrice?.text = String(item.price)
+        cell.cartName?.sizeToFit()
+        cell.cartPrice?.text = String(item.price) + "PLN"
+        cell.cartPrice?.sizeToFit()
         cell.cartImage?.image = item.image
+        cell.cartImage?.layer.shadowColor = UIColor.lightGray.cgColor
+        cell.cartImage?.layer.shadowOpacity = 1.0
+        cell.cartImage?.layer.shadowRadius = 10.0
+        cell.cartImage?.layer.shadowOffset = .zero
+        let layer = cell.cartImage?.layer
+        cell.cartImage?.layer.shadowPath = UIBezierPath(rect: CGRect(x: 0,
+                                                                     y: cell.cartImage.bounds.maxY - layer!.shadowRadius,
+                                                                     width: cell.cartImage.bounds.width,
+                                                                     height: layer!.shadowRadius)).cgPath
         
         return cell
     }
     
     func updateTotal(){
-        totalLabel.text = "Total: " + String(items.map({$0.price}).reduce(0, +))
+        totalLabel.text = String(items.map({$0.price}).reduce(0, +)) + "PLN"
     }
     
 }

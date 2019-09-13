@@ -27,11 +27,12 @@
 		38F70F132195BCA6005E65E5 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F70F102195BCA6005E65E5 /* AppCoordinator.swift */; };
 		38F70F202199EAE9005E65E5 /* FaceTrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F70F1F2199EAE9005E65E5 /* FaceTrackingManager.swift */; };
 		38F70F27219B57BB005E65E5 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 38F70F26219B57BB005E65E5 /* art.scnassets */; };
+		8E1D0FF2231F220C00910E17 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1D0FF1231F220C00910E17 /* InfoViewController.swift */; };
 		8E661F0B2301E61500594F6C /* HatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E661F0A2301E61500594F6C /* HatModel.swift */; };
+		8E883823231DCCE700357026 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E883822231DCCE700357026 /* MenuCell.swift */; };
+		8EA603E02329540600482246 /* FaceOcclusionOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA603DF2329540600482246 /* FaceOcclusionOverlay.swift */; };
 		8EBD33F52301622200FFC437 /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EBD33F42301622200FFC437 /* main.storyboard */; };
 		8EBD33F9230170C800FFC437 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD33F8230170C800FFC437 /* ProductViewController.swift */; };
-		8EBD33FB2301718000FFC437 /* ExampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD33FA2301718000FFC437 /* ExampleCell.swift */; };
-		8EBD33FD23017CD400FFC437 /* ExampleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EBD33FC23017CD400FFC437 /* ExampleCell.xib */; };
 		8EC09DE123154AFE0097554C /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC09DE023154AFE0097554C /* CartViewController.swift */; };
 		CE53EAA4DD7E507B674B48DE /* Pods_ARWig.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2098AF6A206BD50DAEB4790 /* Pods_ARWig.framework */; };
 /* End PBXBuildFile section */
@@ -58,11 +59,12 @@
 		38F70F102195BCA6005E65E5 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		38F70F1F2199EAE9005E65E5 /* FaceTrackingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceTrackingManager.swift; sourceTree = "<group>"; };
 		38F70F26219B57BB005E65E5 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		8E1D0FF1231F220C00910E17 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		8E661F0A2301E61500594F6C /* HatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatModel.swift; sourceTree = "<group>"; };
+		8E883822231DCCE700357026 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		8EA603DF2329540600482246 /* FaceOcclusionOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceOcclusionOverlay.swift; sourceTree = "<group>"; };
 		8EBD33F42301622200FFC437 /* main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = main.storyboard; sourceTree = "<group>"; };
 		8EBD33F8230170C800FFC437 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
-		8EBD33FA2301718000FFC437 /* ExampleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCell.swift; sourceTree = "<group>"; };
-		8EBD33FC23017CD400FFC437 /* ExampleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExampleCell.xib; sourceTree = "<group>"; };
 		8EC09DE023154AFE0097554C /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		92C017D6BEB89F48B746141F /* Pods-ARHat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARHat.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARHat/Pods-ARHat.release.xcconfig"; sourceTree = "<group>"; };
 		939BF35EEBFEC48D1E1915D8 /* Pods-ARHat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARHat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARHat/Pods-ARHat.debug.xcconfig"; sourceTree = "<group>"; };
@@ -91,8 +93,9 @@
 				38029B77219DB7CF00EEDA8B /* Face2D.swift */,
 				38029B79219DE97800EEDA8B /* Face3D.swift */,
 				388F453921C978AA0006B10C /* Face.swift */,
-				8EBD33FA2301718000FFC437 /* ExampleCell.swift */,
 				8E661F0A2301E61500594F6C /* HatModel.swift */,
+				8E883822231DCCE700357026 /* MenuCell.swift */,
+				8EA603DF2329540600482246 /* FaceOcclusionOverlay.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -101,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				8EC09DE023154AFE0097554C /* CartViewController.swift */,
+				8E1D0FF1231F220C00910E17 /* InfoViewController.swift */,
 				8EBD33F8230170C800FFC437 /* ProductViewController.swift */,
 				3805994221C2A72E00FC096D /* FaceDetectViewController.xib */,
 				3805994321C2A72E00FC096D /* FaceDetectViewController.swift */,
@@ -140,7 +144,6 @@
 		38F70EF82195B9B9005E65E5 /* ARHat */ = {
 			isa = PBXGroup;
 			children = (
-				8EBD33FC23017CD400FFC437 /* ExampleCell.xib */,
 				38029B76219DB78E00EEDA8B /* Model */,
 				38F70F1E2199EA84005E65E5 /* Managers */,
 				38F70F0D2195BC36005E65E5 /* Coordinators */,
@@ -268,7 +271,6 @@
 				38D9EF0321C2C0FA00657BE7 /* FaceDetectViewController.xib in Resources */,
 				38F70F042195B9BB005E65E5 /* LaunchScreen.storyboard in Resources */,
 				38F70F27219B57BB005E65E5 /* art.scnassets in Resources */,
-				8EBD33FD23017CD400FFC437 /* ExampleCell.xib in Resources */,
 				38F70F012195B9BB005E65E5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,13 +305,11 @@
 				"${PODS_ROOT}/Target Support Files/Pods-ARHat/Pods-ARHat-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/VerticalCardSwiper/VerticalCardSwiper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VerticalCardSwiper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -329,14 +329,16 @@
 				38F70F202199EAE9005E65E5 /* FaceTrackingManager.swift in Sources */,
 				38A85E6321A58E2600E09C59 /* SCNVector3+Arithmetic.swift in Sources */,
 				38F70F132195BCA6005E65E5 /* AppCoordinator.swift in Sources */,
-				8EBD33FB2301718000FFC437 /* ExampleCell.swift in Sources */,
+				8E883823231DCCE700357026 /* MenuCell.swift in Sources */,
 				8EBD33F9230170C800FFC437 /* ProductViewController.swift in Sources */,
 				38F70EFA2195B9B9005E65E5 /* AppDelegate.swift in Sources */,
 				8EC09DE123154AFE0097554C /* CartViewController.swift in Sources */,
 				38F70F122195BCA6005E65E5 /* BaseCoordinator.swift in Sources */,
 				38029B78219DB7CF00EEDA8B /* Face2D.swift in Sources */,
 				38F70F112195BCA6005E65E5 /* MainCoordinator.swift in Sources */,
+				8EA603E02329540600482246 /* FaceOcclusionOverlay.swift in Sources */,
 				38D9EF0421C2C0FF00657BE7 /* FaceDetectViewController.swift in Sources */,
+				8E1D0FF2231F220C00910E17 /* InfoViewController.swift in Sources */,
 				388F453E21C989100006B10C /* CGPoint+Arithmetic.swift in Sources */,
 				38A85E6021A482B300E09C59 /* ModelsManager.swift in Sources */,
 				38029B7A219DE97800EEDA8B /* Face3D.swift in Sources */,

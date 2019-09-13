@@ -7,88 +7,81 @@
 //
 
 import Foundation
-import VerticalCardSwiper
+import UIKit
 
-class ProductViewController: UIViewController, VerticalCardSwiperDatasource, VerticalCardSwiperDelegate {
+class ProductViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    private var cardSwiper: VerticalCardSwiper!
     
-    private var currentModel: String = ""
+    @IBOutlet var CollectionView: UICollectionView!
+    private var currentHat: Hat!
     
     private let hats: [Hat] = [
-        Hat(name: "Cap", price: 69.69, image: UIImage(named: "hat1")!, usdzName: "capdobre1"),
-        Hat(name: "Beanie wool", price: 6.66, image: UIImage(named: "hat2")!, usdzName: "BEANIEDOBRE1")
+        Hat(name: "Cap", price: 120, image: UIImage(named: "cap")!, usdzName: "capdobre1"),
+        Hat(name: "Beanie", price: 150, image: UIImage(named: "beanie")!, usdzName: "BEANIEDOBRE1")
     ]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //let viewFrame = self.view.alignmentRect(forFrame: self.view.bounds)
+        CollectionView.delegate = self
+        CollectionView.dataSource = self
         
-        let viewFrame = CGRect(x: 0.0, y: 64.0, width: 375, height: 603)
-        
-        cardSwiper = VerticalCardSwiper(frame: viewFrame)
-        view.addSubview(cardSwiper)
-        view.backgroundColor = UIColor.white
-        
-        cardSwiper.datasource = self
-        cardSwiper.delegate = self
-        
-        // register cardcell for storyboard use
-        cardSwiper.register(nib: UINib(nibName: "ExampleCell", bundle: nil), forCellWithReuseIdentifier: "ExampleCell")
     }
     
-    func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
-        
-        if let cardCell = verticalCardSwiperView.dequeueReusableCell(withReuseIdentifier: "ExampleCell", for: index) as? ExampleCardCell {
-            
-            cardCell.nameLabel.text = String(hats[index].name)
-            cardCell.priceLabel.text = String(hats[index].price)
-            cardCell.productImage.image = hats[index].image
-            cardCell.setRandomBackgroundColor()
-            
-            cardCell.callback = {
-                addToCart(item: self.hats[index])
-            }
-            
-            return cardCell
-        }
-        
-        return CardCell()
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    func didTapCard(verticalCardSwiperView: VerticalCardSwiperView, index: Int) {
-        currentModel = hats[index].usdzName
-        performSegue(withIdentifier: "menuToAR", sender: self)
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as? FaceDetectViewController
-        vc?.model = currentModel
-    }
-    
-    func numberOfCards(verticalCardSwiperView: VerticalCardSwiperView) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return hats.count
     }
     
     
-    @IBAction func buttonTapped(_ sender: UIBarButtonItem) {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuCell", for: indexPath) as! MenuCellClass
         
-        performSegue(withIdentifier: "toAR", sender: self)
+        cell.HatImage.image = hats[indexPath.row].image
+        cell.HatName.text = String(hats[indexPath.row].name)
+        cell.HatName.sizeToFit()
+        cell.PriceLabel.text = String(hats[indexPath.row].price) + "PLN"
+        cell.PriceLabel.sizeToFit()
         
+        cell.callback = {
+            addToCart(item: self.hats[indexPath.row])
+        }
+        
+        
+        cell.contentView.layer.cornerRadius = 2.0
+//        //cell.contentView.layer.borderWidth = 1.0
+//        //cell.contentView.layer.borderColor = UIColor.clear.cgColor
+//        cell.contentView.layer.masksToBounds = true
+//        cell.HatImage.layer.shadowOpacity = 0.0
+//        cell.HatImage.layer.shadowRadius = 0.0
+        
+        cell.layer.shadowColor = UIColor.lightGray.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)//CGSizeMake(0, 2.0);
+        cell.layer.shadowRadius = 6.0
+        cell.layer.shadowOpacity = 1.0
+        cell.layer.masksToBounds = false
+        cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
+        
+        return cell
     }
     
-   
-    @IBAction func cartTapped(_ sender: UIBarButtonItem) {
-        
-        performSegue(withIdentifier: "menuToCart", sender: self)
-        
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        currentHat = hats[indexPath.row]
+        performSegue(withIdentifier: "menuToInfo", sender: self)
     }
     
-    public func getCurrentIndex() -> Void {
-        print(String(cardSwiper.focussedCardIndex!))
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as? InfoViewController
+        vc?.currentHat = currentHat
     }
     
     
