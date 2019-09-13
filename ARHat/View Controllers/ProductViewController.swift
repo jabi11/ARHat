@@ -41,6 +41,7 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
         return hats.count
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuCell", for: indexPath) as! MenuCellClass
         
