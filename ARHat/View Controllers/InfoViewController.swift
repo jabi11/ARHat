@@ -34,6 +34,12 @@ class InfoViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        let navigationTitleImageView = UIImageView(image: UIImage(named: "dressmelogo1.0"))
+        
+        navigationItem.titleView = navigationTitleImageView
+        navigationItem.titleView?.contentMode = .scaleAspectFit
+        
         HatImageView.image = currentHat.image
         NameLabel.text = currentHat.name
         NameLabel.sizeToFit()
@@ -53,6 +59,9 @@ class InfoViewController: UIViewController {
         if segue.identifier == "infoToAR" {
             let vc = segue.destination as? FaceDetectViewController
             vc?.model = currentHat.usdzName
+            vc?.scale = currentHat.scale
+            vc?.position = currentHat.position
+            vc?.tilt = currentHat.tilt
         }
         
         if segue.identifier == "infoToCart" {

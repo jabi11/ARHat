@@ -15,7 +15,7 @@ class FaceOcclusionOverlay: NSObject {
     var occlusionNode: SCNNode!
     
     /// - Tag: OcclusionMaterial
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor, activenode: SCNNode) -> SCNNode? {
+    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor, activenode: SCNNode, scale: SCNVector3, position: SCNVector3, tilt: SCNVector3) -> SCNNode? {
         guard let sceneView = renderer as? ARSCNView,
             anchor is ARFaceAnchor else { return nil }
 
@@ -35,9 +35,10 @@ class FaceOcclusionOverlay: NSObject {
 
         // Add 3D asset positioned to appear as "glasses".
         let faceOverlayContent = activenode
-        faceOverlayContent.scale = SCNVector3(x: 0.17 , y: 0.17, z: 0.2)
-        faceOverlayContent.position = SCNVector3(x: 0, y: 0.13, z: -0.035)
-        faceOverlayContent.eulerAngles = SCNVector3(x: -0.2, y: 0, z: 0)
+        faceOverlayContent.scale = scale
+        faceOverlayContent.position = position
+        faceOverlayContent.eulerAngles = tilt
+//        faceOverlayContent.pivot = SCNMatrix4MakeTranslation(0,0,-0.075)
 
         contentNode = SCNNode()
         contentNode!.addChildNode(occlusionNode)

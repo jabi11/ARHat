@@ -54,6 +54,9 @@ class FaceDetectViewController: UIViewController {
     var activeNode = SCNNode()
     
     public var model: String = ""
+    public var scale: SCNVector3!
+    public var position: SCNVector3!
+    public var tilt: SCNVector3!
     //3. Our Dyanmic Scenes
     var modelRoot: SCNNode!
     var maxFaceWidth: Float = 0
@@ -176,7 +179,7 @@ extension FaceDetectViewController: ARSCNViewDelegate {
         
         // If this is the first time with this anchor, get the controller to create content.
         // Otherwise (switching content), will change content when setting `selectedVirtualContent`.
-        if node.childNodes.isEmpty, let contentNode = oculusion.renderer(renderer, nodeFor: faceAnchor, activenode: activeNode) {
+        if node.childNodes.isEmpty, let contentNode = oculusion.renderer(renderer, nodeFor: faceAnchor, activenode: activeNode,scale: scale, position: position, tilt: tilt) {
             node.addChildNode(contentNode)
         }
     }

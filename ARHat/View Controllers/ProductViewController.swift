@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SceneKit
 
 class ProductViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -16,8 +17,12 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
     private var currentHat: Hat!
     
     private let hats: [Hat] = [
-        Hat(name: "Cap", price: 120, image: UIImage(named: "cap")!, usdzName: "capdobre1"),
-        Hat(name: "Beanie", price: 150, image: UIImage(named: "beanie")!, usdzName: "BEANIEDOBRE1")
+        Hat(name: "Cap", price: 120, image: UIImage(named: "cap")!, usdzName: "capdobre1",position: SCNVector3(x: 0, y: 0.11, z: -0.045),scale: SCNVector3(x: 0.165 , y: 0.165, z: 0.225), tilt: SCNVector3(x: -0.1, y: 0, z: 0)),
+        Hat(name: "Cap fit", price: 120, image: UIImage(named: "cap")!, usdzName: "newcap1.4",position: SCNVector3(x: 0, y: 0.11, z: -0.01),scale: SCNVector3(x: 0.135 , y: 0.135, z: 0.135), tilt: SCNVector3(x: -0.2, y: 0, z: 0)),
+        Hat(name: "Cylinder", price: 120, image: UIImage(named: "cap")!, usdzName: "cylinder1.1",position: SCNVector3(x: 0, y: 0.13, z: -0.075),scale: SCNVector3(x: 0.075 , y: 0.075, z: 0.075), tilt: SCNVector3(x: 0, y: 0, z: 0) ),
+        Hat(name: "Beanie", price: 150, image: UIImage(named: "beanie")!, usdzName: "BEANIEDOBRE1",position: SCNVector3(x: 0, y: 0.115, z: -0.05),scale: SCNVector3(x: 0.17 , y: 0.17, z: 0.2), tilt: SCNVector3(x: -0.1, y: 0, z: 0)),
+        Hat(name: "Beanie zew", price: 150, image: UIImage(named: "beanie")!, usdzName: "beaniefit",position: SCNVector3(x: 0, y: 0.115, z: -0.05),scale: SCNVector3(x: 0.17 , y: 0.17, z: 0.17), tilt: SCNVector3(x: -0.2, y: 0, z: 0)),
+        Hat(name: "Beanie wew", price: 150, image: UIImage(named: "beanie")!, usdzName: "beanie_srodek",position: SCNVector3(x: 0, y: 0.115, z: -0.05),scale: SCNVector3(x: 0.17 , y: 0.17, z: 0.2), tilt: SCNVector3(x: -0.1, y: 0, z: 0))
     ]
     
     
