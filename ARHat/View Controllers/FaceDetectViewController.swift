@@ -54,6 +54,7 @@ class FaceDetectViewController: UIViewController {
     var activeNode = SCNNode()
     
     public var model: String = ""
+    public var name: String = ""
     public var scale: SCNVector3!
     public var position: SCNVector3!
     public var tilt: SCNVector3!
@@ -63,6 +64,8 @@ class FaceDetectViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = name
         
         setupScenes()
         

@@ -62,6 +62,7 @@ class InfoViewController: UIViewController {
             vc?.scale = currentHat.scale
             vc?.position = currentHat.position
             vc?.tilt = currentHat.tilt
+            vc?.name = currentHat.name
         }
         
         if segue.identifier == "infoToCart" {
