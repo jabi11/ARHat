@@ -35,10 +35,14 @@ class InfoViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        let navigationTitleImageView = UIImageView(image: UIImage(named: "dressmelogo1.0"))
+        let navigationTitleImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 110, height: 30))
+        let logoContainer = UIView(frame: CGRect(x: 0, y: 0, width: 110, height: 30))
         
-        navigationItem.titleView = navigationTitleImageView
-        navigationItem.titleView?.contentMode = .scaleAspectFit
+        navigationTitleImageView.image = UIImage(named: "dressmelogo1.0")
+        navigationTitleImageView.contentMode = .scaleAspectFit
+        logoContainer.addSubview(navigationTitleImageView)
+        
+        navigationItem.titleView = logoContainer
         
         HatImageView.image = currentHat.image
         NameLabel.text = currentHat.name
