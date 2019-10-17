@@ -20,7 +20,7 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
         Hat(name: "Cap no.1", price: 120, image: UIImage(named: "newcap1.8")!, usdzName: "newcap1.8",position: SCNVector3(x: 0, y: 0.10, z: -0.01),scale: SCNVector3(x: 0.165 , y: 0.18, z: 0.165), tilt: SCNVector3(x: -0.2, y: 0, z: 0)),
         Hat(name: "Cylinder", price: 120, image: UIImage(named: "cap")!, usdzName: "cylinder1.1",position: SCNVector3(x: 0, y: 0.13, z: -0.075),scale: SCNVector3(x: 0.075 , y: 0.075, z: 0.075), tilt: SCNVector3(x: 0, y: 0, z: 0) ),
         Hat(name: "Beanie", price: 150, image: UIImage(named: "beaniefit1.6")!, usdzName: "beaniefit1.6",position: SCNVector3(x: 0, y: 0.115, z: -0.05),scale: SCNVector3(x: 0.17 , y: 0.17, z: 0.2), tilt: SCNVector3(x: -0.1, y: 0, z: 0)),
-        Hat(name: "Pink Beanie", price: 150, image: UIImage(named: "beaniefit1.6")!, usdzName: "beaniepink1",position: SCNVector3(x: 0, y: 0.115, z: -0.05),scale: SCNVector3(x: 0.17 , y: 0.17, z: 0.2), tilt: SCNVector3(x: -0.1, y: 0, z: 0))
+        Hat(name: "Pink Beanie", price: 150, image: UIImage(named: "beanie_pink")!, usdzName: "beaniepink1",position: SCNVector3(x: 0, y: 0.115, z: -0.05),scale: SCNVector3(x: 0.17 , y: 0.17, z: 0.2), tilt: SCNVector3(x: -0.1, y: 0, z: 0))
     ]
     
     
