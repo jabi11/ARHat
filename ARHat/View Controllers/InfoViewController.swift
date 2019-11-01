@@ -44,6 +44,7 @@ class InfoViewController: UIViewController {
         
         navigationItem.titleView = logoContainer
         
+        HatImageView.contentMode = .scaleAspectFit
         HatImageView.image = currentHat.image
         NameLabel.text = currentHat.name
         NameLabel.sizeToFit()

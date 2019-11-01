@@ -55,6 +55,7 @@ class CartViewController: UITableViewController{
         cell.cartName?.sizeToFit()
         cell.cartPrice?.text = String(item.price) + "PLN"
         cell.cartPrice?.sizeToFit()
+        cell.cartImage?.contentMode = .scaleAspectFill
         cell.cartImage?.image = item.image
         cell.cartImage?.layer.shadowColor = UIColor.lightGray.cgColor
         cell.cartImage?.layer.shadowOpacity = 1.0

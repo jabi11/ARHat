@@ -121,10 +121,6 @@
                                     <action selector="CheckoutTapped:" destination="bLa-7L-0Ih" eventType="touchUpInside" id="Gb0-D7-UHo"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ios11-camera-live-photo-icon" translatesAutoresizingMaskIntoConstraints="NO" id="ga9-2T-Fhm">
-                                <rect key="frame" x="328" y="309" width="40" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AI5-1w-Eye">
                                 <rect key="frame" x="12" y="426" width="351" height="146"/>
                                 <subviews>
@@ -298,25 +294,29 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="122"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gm2-mo-Wro" userLabel="nameLabel">
-                                            <rect key="frame" x="276" y="13" width="96" height="33"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gm2-mo-Wro" userLabel="nameLabel">
+                                            <rect key="frame" x="283.5" y="13" width="65.5" height="30"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
                                             <color key="textColor" red="0.6705882352941176" green="0.6588235294117647" blue="0.63529411764705879" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kM5-vw-6be" userLabel="priceLabel">
-                                            <rect key="frame" x="276" y="42" width="49" height="36"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kM5-vw-6be" userLabel="priceLabel">
+                                            <rect key="frame" x="307" y="42" width="42" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.6705882352941176" green="0.6588235294117647" blue="0.63529411764705879" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ij0-Qv-CMK">
-                                            <rect key="frame" x="12" y="13" width="150" height="100"/>
+                                            <rect key="frame" x="12" y="13" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="gm2-mo-Wro" secondAttribute="trailing" constant="10" id="FLH-Ij-Ymz"/>
+                                        <constraint firstItem="gm2-mo-Wro" firstAttribute="top" secondItem="9mc-pI-b4G" secondAttribute="topMargin" constant="2" id="ZnA-zB-9KT"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="kM5-vw-6be" secondAttribute="trailing" constant="10" id="ah8-wg-nE5"/>
+                                        <constraint firstItem="kM5-vw-6be" firstAttribute="top" secondItem="9mc-pI-b4G" secondAttribute="topMargin" constant="31" id="zkN-oB-TX7"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="cartImage" destination="ij0-Qv-CMK" id="DK9-r7-XqT"/>
@@ -361,6 +361,5 @@
     </scenes>
     <resources>
         <image name="cart" width="30" height="30"/>
-        <image name="ios11-camera-live-photo-icon" width="150" height="126"/>
     </resources>
 </document>
