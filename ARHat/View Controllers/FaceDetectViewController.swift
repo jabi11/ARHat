@@ -80,16 +80,17 @@ class FaceDetectViewController: UIViewController {
         spotLight.light?.type = .directional
         
         previewView.scene.rootNode.addChildNode(spotLight)
+        
 
-        timer = Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true, block: { [weak self] _ in
-            self?.faceTracking()
-        })
+//        //timer = Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true, block: { [weak self] _ in
+//            self?.faceTracking()
+//        })
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        let configuration = ARWorldTrackingConfiguration()
+        let configuration = ARFaceTrackingConfiguration()
         previewView.session.run(configuration)
     }
 
@@ -115,8 +116,9 @@ class FaceDetectViewController: UIViewController {
 
    
     // MARK: - FACE AR TRACKING
-    
+    /*
     fileprivate func faceTracking() {
+        
         
         if previewView.session.configuration == ARWorldTrackingConfiguration() {
             
@@ -164,7 +166,7 @@ class FaceDetectViewController: UIViewController {
         } else if previewView.session.configuration == ARFaceTrackingConfiguration() {
             return
         }
-    }
+    } */
 
     func distance(_ a: CGPoint, _ b: CGPoint) -> CGFloat {
         let xDist = a.x - b.x

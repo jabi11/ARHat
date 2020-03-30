@@ -5,9 +5,9 @@
 //  Created by Esteban Arrúa on 11/9/18.
 //  Copyright © 2018 Hattrick It. All rights reserved.
 //
-
+/*
 import Foundation
-import RxSwift
+//import RxSwift
 
 class AppCoordinator: BaseCoordinator<Void> {
 
@@ -33,3 +33,4 @@ class AppCoordinator: BaseCoordinator<Void> {
     }
 
 }
+*/
